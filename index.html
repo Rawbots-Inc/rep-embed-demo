@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rep Embed Demo</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      min-height: 100dvh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .iframe-container {
+      height: 100%;
+      border: none;
+      width: 480px;
+    }
+  </style>
+  <script src="https://dev.rep.run/iframe/index.js" defer></script>
+</head>
+
+<body>
+  <main>
+    <h1>This is your website</h1>
+  </main>
+
+  <iframe title="rep-iframe" id="rep-iframe" class="iframe-container" src="https://dev.rep.run"
+    sandbox="allow-storage-access-by-user-activation allow-forms allow-scripts allow-modals allow-popups allow-same-origin"></iframe>
+</body>
+
+</html>
