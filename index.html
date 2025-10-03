@@ -14,44 +14,49 @@
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
-<style>
-        #rep-iframe {
-            width: 100%;
-            max-width: 520px;
-            height: 100vh;
-            position: fixed;
-            z-index: 9999;
-            right: 0;
-            top: 0;
-            background: black;
-            transform: translateX(100%);
-            transition: all 0.3s ease;
-            border: 0;
-        }
+	<style>
+		#rep-iframe {
+			width: 100%;
+			max-width: 520px;
+			height: 100dvh;
+			position: fixed;
+			z-index: 9999;
+			right: 0;
+			top: 0;
+			background: black;
+			transform: translateX(100%);
+			transition: all 0.3s ease;
+			border: 0;
+		}
 
-        .rep-btn {
-            position: fixed;
-            z-index: 10000;
-            bottom: 24px;
-            right: 24px;
-            padding: 4px 12px 4px 4px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 14px;
-            line-height: 16px;
-            overflow: hidden;
-            max-width: 44px;
-            max-height: 44px;
-            justify-content: flex-start;
-            transition: all 0.3s ease;
-            background-color: #23232F;
-            color: #fff;
-            border: none;
-            cursor: default;
-        }
+		.rep-btn {
+			position: fixed;
+			z-index: 10000;
+			bottom: 24px;
+			right: 24px;
+			padding: 4px 12px 4px 4px;
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			border-radius: 100px;
+			font-weight: 600;
+			font-size: 14px;
+			line-height: 16px;
+			overflow: hidden;
+			max-width: 44px;
+			max-height: 44px;
+			justify-content: flex-start;
+			transition: all 0.3s ease;
+			background-color: #23232F;
+			color: #fff;
+			border: none;
+			cursor: default;
+		}
+
+		.rep-btn[aria-expanded="true"] {
+			left: calc(100vw - 507px);
+			right: unset;
+		}
 
 		.rep-btn:hover {
 			border: none;
@@ -59,51 +64,62 @@
 			box-shadow: none;
 		}
 
-        .rep-btn:not([data-loading="true"]):hover {
-            max-width: 170px;
-            cursor: pointer;
-        }
+		.rep-btn:not([data-loading="true"]):hover {
+			max-width: 170px;
+			cursor: pointer;
+		}
 
-        .rep-btn:not([data-loading="true"]) .rep-icon {
-            visibility: visible;
-        }
+		.rep-btn:not([data-loading="true"]) .rep-icon {
+			visibility: visible;
+		}
 
-        .rep-btn__spinner {
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.25);
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin-left: 10px;
-            flex-shrink: 0;
-            position: absolute;
-        }
+		.rep-btn__spinner {
+			width: 16px;
+			height: 16px;
+			border: 2px solid rgba(255, 255, 255, 0.25);
+			border-top-color: #fff;
+			border-radius: 50%;
+			animation: spin 0.8s linear infinite;
+			margin-left: 10px;
+			flex-shrink: 0;
+			position: absolute;
+		}
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
 
-        .rep-btn__text {
-            white-space: nowrap;
-        }
+		.rep-btn__text {
+			white-space: nowrap;
+		}
 
-        .rep-icon {
-            display: inline-block;
-            flex-shrink: 0;
-            visibility: hidden;
-        }
+		.rep-icon {
+			display: inline-block;
+			flex-shrink: 0;
+			visibility: hidden;
+		}
 
-        .rep-icon svg {
-            display: block;
-        }
+		.rep-icon svg {
+			display: block;
+		}
 
-        .rep-btn[data-loading="true"] .rep-btn__toggle {
-            display: none;
-        }
-    </style>
+		.rep-btn[data-loading="true"] .rep-btn__toggle {
+			display: none;
+		}
+
+		@media (max-width: 520px) {
+			.rep-btn[aria-expanded="true"] {
+				left: 12px;
+				transition: all 0.3s ease;
+			}
+
+			.rep-btn:not([data-loading="true"]):hover {
+				max-width: 44px;
+			}
+		}
+	</style>
 </head>
 
 <body class="is-preload">
@@ -423,12 +439,14 @@
 				}
 				iframe.addEventListener('load', () => setLoading(false))
 				toggleBtn.addEventListener('click', () => {
+					if (isLoading) return;
 					isOpen = !isOpen
 					toggleBtn.setAttribute('aria-expanded', String(isOpen))
 					applyIframeTransform()
 					updateIcons()
 					lockScrollIfSmallMobile(isOpen)
 				})
+				document.addEventListener("touchstart", function () { }, true);
 				setLoading(true)
 				updateIcons()
 			})()
