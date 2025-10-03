@@ -1,42 +1,438 @@
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rep Embed Demo</title>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      min-height: 100dvh;
-      background-color: #f0f0f0;
-      margin: 0;
-    }
+	<title>Massively by HTML5 UP</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+<style>
+        #rep-iframe {
+            width: 100%;
+            max-width: 520px;
+            height: 100vh;
+            position: fixed;
+            z-index: 9999;
+            right: 0;
+            top: 0;
+            background: black;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+            border: 0;
+        }
 
-    main {
-      flex: 1;
-    }
+        .rep-btn {
+            position: fixed;
+            z-index: 10000;
+            bottom: 24px;
+            right: 24px;
+            padding: 4px 12px 4px 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 16px;
+            overflow: hidden;
+            max-width: 44px;
+            max-height: 44px;
+            justify-content: flex-start;
+            transition: all 0.3s ease;
+            background-color: #23232F;
+            color: #fff;
+            border: none;
+            cursor: default;
+        }
 
-    .iframe-container {
-      height: 100%;
-      border: none;
-      width: 480px;
-    }
-  </style>
-  <script src="https://dev.rep.run/iframe/setup.js" defer></script>
+		.rep-btn:hover {
+			border: none;
+			outline: none;
+			box-shadow: none;
+		}
+
+        .rep-btn:not([data-loading="true"]):hover {
+            max-width: 170px;
+            cursor: pointer;
+        }
+
+        .rep-btn:not([data-loading="true"]) .rep-icon {
+            visibility: visible;
+        }
+
+        .rep-btn__spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 10px;
+            flex-shrink: 0;
+            position: absolute;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .rep-btn__text {
+            white-space: nowrap;
+        }
+
+        .rep-icon {
+            display: inline-block;
+            flex-shrink: 0;
+            visibility: hidden;
+        }
+
+        .rep-icon svg {
+            display: block;
+        }
+
+        .rep-btn[data-loading="true"] .rep-btn__toggle {
+            display: none;
+        }
+    </style>
 </head>
 
-<body>
-  <main>
-    <h1>This is your website</h1>
-  </main>
+<body class="is-preload">
 
-  <iframe title="rep-iframe" id="rep-iframe" class="iframe-container" src="https://dev.rep.run"
-    sandbox="allow-storage-access-by-user-activation allow-forms allow-scripts allow-modals allow-popups allow-same-origin"></iframe>
+	<!-- Wrapper -->
+	<div id="wrapper" class="fade-in">
+
+		<!-- Intro -->
+		<div id="intro">
+			<h1>This is<br />
+				Massively</h1>
+			<p>A free, fully responsive HTML5 + CSS3 site template designed by <a
+					href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
+				and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+			<ul class="actions">
+				<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+			</ul>
+		</div>
+
+		<!-- Header -->
+		<header id="header">
+			<a href="index.html" class="logo">Massively</a>
+		</header>
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul class="links">
+				<li class="active"><a href="index.html">This is Massively</a></li>
+				<li><a href="generic.html">Generic Page</a></li>
+				<li><a href="elements.html">Elements Reference</a></li>
+			</ul>
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+			</ul>
+		</nav>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Featured Post -->
+			<article class="post featured">
+				<header class="major">
+					<span class="date">April 25, 2017</span>
+					<h2><a href="#">And this is a<br />
+							massive headline</a></h2>
+					<p>Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
+						facilisis ante sed etiam magna interdum congue. Lorem ipsum dolor<br />
+						amet nullam sed etiam veroeros.</p>
+				</header>
+				<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
+				<ul class="actions special">
+					<li><a href="#" class="button large">Full Story</a></li>
+				</ul>
+			</article>
+
+			<!-- Posts -->
+			<section class="posts">
+				<article>
+					<header>
+						<span class="date">April 24, 2017</span>
+						<h2><a href="#">Sed magna<br />
+								ipsum faucibus</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+					<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
+						venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+					<ul class="actions special">
+						<li><a href="#" class="button">Full Story</a></li>
+					</ul>
+				</article>
+				<article>
+					<header>
+						<span class="date">April 22, 2017</span>
+						<h2><a href="#">Primis eget<br />
+								imperdiet lorem</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+					<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
+						venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+					<ul class="actions special">
+						<li><a href="#" class="button">Full Story</a></li>
+					</ul>
+				</article>
+				<article>
+					<header>
+						<span class="date">April 18, 2017</span>
+						<h2><a href="#">Ante mattis<br />
+								interdum dolor</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
+					<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
+						venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+					<ul class="actions special">
+						<li><a href="#" class="button">Full Story</a></li>
+					</ul>
+				</article>
+				<article>
+					<header>
+						<span class="date">April 14, 2017</span>
+						<h2><a href="#">Tempus sed<br />
+								nulla imperdiet</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
+					<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
+						venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+					<ul class="actions special">
+						<li><a href="#" class="button">Full Story</a></li>
+					</ul>
+				</article>
+				<article>
+					<header>
+						<span class="date">April 11, 2017</span>
+						<h2><a href="#">Odio magna<br />
+								sed consectetur</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
+					<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
+						venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+					<ul class="actions special">
+						<li><a href="#" class="button">Full Story</a></li>
+					</ul>
+				</article>
+				<article>
+					<header>
+						<span class="date">April 7, 2017</span>
+						<h2><a href="#">Augue lorem<br />
+								primis vestibulum</a></h2>
+					</header>
+					<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
+					<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque
+						venenatis dolor imperdiet dolor mattis sagittis magna etiam.</p>
+					<ul class="actions special">
+						<li><a href="#" class="button">Full Story</a></li>
+					</ul>
+				</article>
+			</section>
+
+			<!-- Footer -->
+			<footer>
+				<div class="pagination">
+					<!--<a href="#" class="previous">Prev</a>-->
+					<a href="#" class="page active">1</a>
+					<a href="#" class="page">2</a>
+					<a href="#" class="page">3</a>
+					<span class="extra">&hellip;</span>
+					<a href="#" class="page">8</a>
+					<a href="#" class="page">9</a>
+					<a href="#" class="page">10</a>
+					<a href="#" class="next">Next</a>
+				</div>
+			</footer>
+
+		</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<section>
+				<form method="post" action="#">
+					<div class="fields">
+						<div class="field">
+							<label for="name">Name</label>
+							<input type="text" name="name" id="name" />
+						</div>
+						<div class="field">
+							<label for="email">Email</label>
+							<input type="text" name="email" id="email" />
+						</div>
+						<div class="field">
+							<label for="message">Message</label>
+							<textarea name="message" id="message" rows="3"></textarea>
+						</div>
+					</div>
+					<ul class="actions">
+						<li><input type="submit" value="Send Message" /></li>
+					</ul>
+				</form>
+			</section>
+			<section class="split contact">
+				<section class="alt">
+					<h3>Address</h3>
+					<p>1234 Somewhere Road #87257<br />
+						Nashville, TN 00000-0000</p>
+				</section>
+				<section>
+					<h3>Phone</h3>
+					<p><a href="#">(000) 000-0000</a></p>
+				</section>
+				<section>
+					<h3>Email</h3>
+					<p><a href="#">info@untitled.tld</a></p>
+				</section>
+				<section>
+					<h3>Social</h3>
+					<ul class="icons alt">
+						<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a>
+						</li>
+						<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a>
+						</li>
+						<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+					</ul>
+				</section>
+			</section>
+		</footer>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<ul>
+				<li>&copy; Untitled</li>
+				<li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<iframe title="rep-iframe" id="rep-iframe" allow="clipboard-read; clipboard-write" src=""></iframe>
+	<script defer src="https://dev.rep.run/iframe/setup.js"></script>
+	<button class="rep-btn" id="rep-toggle" data-loading="true" aria-expanded="false" aria-controls="rep-iframe">
+		<span class="rep-icon" aria-hidden="true">
+			<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<g clip-path="url(#clip0_8032_40412)">
+					<path
+						d="M18 0C8.05846 0 0 8.05846 0 18C0 27.9415 8.05846 36 18 36C27.9415 36 36 27.9415 36 18C36 8.05846 27.9415 0 18 0ZM17.28 26.1554C17.28 28.9385 15.0231 31.1954 12.24 31.1954C9.45692 31.1954 7.2 28.9385 7.2 26.1554V9.84462C7.2 7.06154 9.45692 4.80462 12.24 4.80462C13.6246 4.80462 14.8985 5.37231 15.7985 6.28615C16.7123 7.2 17.28 8.44615 17.28 9.84462V26.1554ZM23.76 14.8846C20.9769 14.8846 18.72 12.6277 18.72 9.84462C18.72 7.06154 20.9769 4.80462 23.76 4.80462C26.5431 4.80462 28.8 7.06154 28.8 9.84462C28.8 12.6277 26.5431 14.8846 23.76 14.8846Z"
+						fill="url(#paint0_linear_8032_40412)" />
+				</g>
+				<defs>
+					<linearGradient id="paint0_linear_8032_40412" x1="0" y1="18" x2="36" y2="18"
+						gradientUnits="userSpaceOnUse">
+						<stop stop-color="#9300E9" />
+						<stop offset="1" stop-color="#5300FF" />
+					</linearGradient>
+					<clipPath id="clip0_8032_40412">
+						<rect width="36" height="36" fill="white" />
+					</clipPath>
+				</defs>
+			</svg>
+		</span>
+		<span class="rep-btn__text">Rep Social</span>
+		<span class="rep-btn__toggle rep-icon" aria-hidden="true" style="margin-left:auto;">
+			<svg id="rep-icon-expand" width="20" height="20" viewBox="0 0 20 20" fill="none">
+				<path
+					d="M13.4917 1.66699H6.50841C3.47508 1.66699 1.66675 3.47533 1.66675 6.50866V13.4837C1.66675 16.5253 3.47508 18.3337 6.50841 18.3337H13.4834C16.5167 18.3337 18.3251 16.5253 18.3251 13.492V6.50866C18.3334 3.47533 16.5251 1.66699 13.4917 1.66699ZM14.3751 10.2753C14.3751 10.617 14.0917 10.9003 13.7501 10.9003C13.4084 10.9003 13.1251 10.617 13.1251 10.2753V7.75866L6.69175 14.192C6.56675 14.317 6.40841 14.3753 6.25008 14.3753C6.09175 14.3753 5.93341 14.317 5.80841 14.192C5.56675 13.9503 5.56675 13.5503 5.80841 13.3087L12.2417 6.87533H9.72508C9.38341 6.87533 9.10008 6.59199 9.10008 6.25033C9.10008 5.90866 9.38341 5.62533 9.72508 5.62533H13.7501C14.0917 5.62533 14.3751 5.90866 14.3751 6.25033V10.2753Z"
+					fill="white" />
+			</svg>
+			<svg id="rep-icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" style="display:none;">
+				<path
+					d="M10.0001 1.66699C5.40841 1.66699 1.66675 5.40866 1.66675 10.0003C1.66675 14.592 5.40841 18.3337 10.0001 18.3337C14.5917 18.3337 18.3334 14.592 18.3334 10.0003C18.3334 5.40866 14.5917 1.66699 10.0001 1.66699ZM12.8001 11.917C13.0417 12.1587 13.0417 12.5587 12.8001 12.8003C12.6751 12.9253 12.5167 12.9837 12.3584 12.9837C12.2001 12.9837 12.0417 12.9253 11.9167 12.8003L10.0001 10.8837L8.08341 12.8003C7.95841 12.9253 7.80008 12.9837 7.64175 12.9837C7.48341 12.9837 7.32508 12.9253 7.20008 12.8003C6.95842 12.5587 6.95842 12.1587 7.20008 11.917L9.11675 10.0003L7.20008 8.08366C6.95842 7.84199 6.95842 7.44199 7.20008 7.20033C7.44175 6.95866 7.84175 6.95866 8.08341 7.20033L10.0001 9.11699L11.9167 7.20033C12.1584 6.95866 12.5584 6.95866 12.8001 7.20033C13.0417 7.44199 13.0417 7.84199 12.8001 8.08366L10.8834 10.0003L12.8001 11.917Z"
+					fill="white" />
+			</svg>
+		</span>
+		<span class="rep-btn__spinner" id="rep-spinner" aria-hidden="true"></span>
+	</button>
+	<script>
+		const REPSOCIAL_URL = 'https://dev.rep.run'
+			; (function () {
+				const url = (REPSOCIAL_URL || '').trim()
+				const iframe = document.getElementById('rep-iframe')
+				const toggleBtn = document.getElementById('rep-toggle')
+				const spinner = document.getElementById('rep-spinner')
+				const expandIcon = document.getElementById('rep-icon-expand')
+				const closeIcon = document.getElementById('rep-icon-close')
+				if (!url) {
+					iframe.style.display = 'none'
+					toggleBtn.style.display = 'none'
+					return
+				}
+				let isOpen = false
+				let isLoading = true
+				let restoredScrollTop = 0
+				function applyIframeTransform() {
+					iframe.style.transform = (isOpen && !isLoading) ? 'translateX(0)' : 'translateX(100%)'
+				}
+				function setLoading(loading) {
+					isLoading = loading
+					toggleBtn.dataset.loading = String(loading)
+					spinner.style.display = loading ? 'inline-block' : 'none'
+					applyIframeTransform()
+					if (loading) {
+						expandIcon.style.display = 'block'
+						closeIcon.style.display = 'none'
+					}
+				}
+				function updateIcons() {
+					if (isOpen) {
+						expandIcon.style.display = 'none'
+						closeIcon.style.display = 'block'
+					} else {
+						expandIcon.style.display = 'block'
+						closeIcon.style.display = 'none'
+					}
+				}
+				function lockScrollIfSmallMobile(opening) {
+					const isMobile = window.innerWidth <= 375
+					if (!isMobile) return
+					if (opening) {
+						setTimeout(() => {
+							restoredScrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0
+							document.documentElement.style.position = 'fixed'
+							document.documentElement.style.width = '100%'
+						}, 300)
+					} else {
+						document.documentElement.style.position = ''
+						document.documentElement.style.width = ''
+						window.scrollTo(0, restoredScrollTop || 0)
+					}
+				}
+				iframe.addEventListener('load', () => setLoading(false))
+				toggleBtn.addEventListener('click', () => {
+					isOpen = !isOpen
+					toggleBtn.setAttribute('aria-expanded', String(isOpen))
+					applyIframeTransform()
+					updateIcons()
+					lockScrollIfSmallMobile(isOpen)
+				})
+				setLoading(true)
+				updateIcons()
+			})()
+	</script>
 </body>
 
 </html>
